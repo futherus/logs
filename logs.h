@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#define VERBOSE
+
 #define ASSERT$(CONDITION__, ERROR__, ACTION__)                                       \
     do                                                                                \
     {                                                                                 \
@@ -42,6 +44,7 @@
         }                                                                             \
     } while(0)                                                                        \
 
+#ifdef VERBOSE
 #define LOG$(MESSAGE__, ...)                                                          \
     {                                                                                 \
         FILE* stream__ = logs_get();                                                  \
@@ -62,6 +65,11 @@
                     ##__VA_ARGS__);                                                   \
         }                                                                             \
     }                                                                                 \
+
+#else
+#define LOG$(MESSAGE__, ...) {void(0);}
+#define MSG$(MESSAGE__, ...) {void(0);}
+#endif
 
 FILE* logs_init(const char* filename);
 FILE* logs_open(const char* filename);
