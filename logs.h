@@ -26,7 +26,7 @@
     } while(0)                                                                        \
 
 #define ASSERT_RET$(CONDITION__, ERROR__)             \
-    ASSERT(CONDITION__, ERROR__, return ERROR__; )   \
+    ASSERT$(CONDITION__, ERROR__, return ERROR__; )   \
 
 #define PASS$(CONDITION__, ACTION__)                                                  \
     do                                                                                \
